@@ -41,13 +41,14 @@ class Table extends CI_Controller {
 
         $dom_1 = new DOMDocument;
         $dom_1->preserveWhiteSpace = False;
-        $dom_1->loadXML($dom);
-        $dom_1->save('xml/plik.xml');
-        $xml = simplexml_load_file("xml/plik.xml");
+        $dom_1->load('https://pipser.pl/api/pro_demo_2017030692.php?type=xml');
+        //$dom_1->loadXML($dom_1);
+        $dom_1->save( 'xml/plik.xml');
+        
 
         $dom = new DOMDocument();
 
-        $dom->load('xml/plik.xml');
+        
 
         $employees = $dom->getElementsByTagName('employee');
 
@@ -68,7 +69,8 @@ class Table extends CI_Controller {
             );
             continue;
         }
-        $dom_1->load('https://pipser.pl/api/pro_demo_2017030692.php?type=xml');
+        
+        
         $employees = $dom_1->getElementsByTagName('pair');
 
         foreach ($employees as $employee) {
@@ -115,7 +117,7 @@ class Table extends CI_Controller {
               
        
         
-        $dane = array('tmp_1' => $tmp_1,'token'=> $wiersz);
+        $dane = array('tmp_1' => $tmp_1,'token'=> mt_rand(100000, 999999));
         $this->load->view('table', $dane);
         //$this->sms_send($params);
         

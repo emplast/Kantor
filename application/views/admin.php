@@ -71,7 +71,7 @@ and open the template in the editor.
         <script src="<?php echo base_url();?>plugins/knob/jquery.knob.js"></script>
         <!-- daterangepicker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-        <script src="<?php echo base_url();?>Kantor/plugins/daterangepicker/daterangepicker.js"></script>
+        <script src="<?php echo base_url();?>plugins/daterangepicker/daterangepicker.js"></script>
         <!-- datepicker -->
         <script src="<?php echo base_url();?>plugins/datepicker/bootstrap-datepicker.js"></script>
         <!-- Bootstrap WYSIHTML5 -->
