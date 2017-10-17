@@ -12,7 +12,7 @@ and open the template in the editor.
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Admnistrator</title>
+        <title>Obsługa Kantoru</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -104,11 +104,10 @@ and open the template in the editor.
 
         <div class="skin-blue ">
             <header class="main-header">
-                <a href="<?php echo base_url() ?>index.php/Welcome" class="logo">
+                <a href="#" class="logo">
                     <!-- LOGO -->
                     Panel administracyjny
                 </a>
-
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Navbar Right Menu -->
@@ -140,10 +139,10 @@ and open the template in the editor.
                             <p>Nazwa użytkownika:</p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i><?php echo $user ?></a>
+
                         </div>
                     </div><!-- /.user-panel -->
-                    </br></br></br>
-
+                    </br>
 
                     <div class="wrapper">
                         <!-- Sidebar Menu -->
@@ -151,23 +150,22 @@ and open the template in the editor.
                             <li class="header">MENU</li>
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="<?php echo base_url('index.php/Login/out'); ?>">Wyloguj</a></li>
-                            <li><a href="<?php echo base_url(); ?>index.php/Admin/index"><span>Administracja</span></a></li>
-
+                            <li><a href="<?php echo base_url(); ?>index.php/AdminUser/index"><span>Administracja</span></a></li>
                             <li class="treeview">
-                                <a href="<?php echo base_url(); ?>index.php/Admin/index">
+                                <a href="<?php echo base_url(); ?>index.php/AdminUser/index">
                                     <i class="fa fa-share"></i> <span>Administracja</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
-
                                 <ul class="treeview-menu">
                                     <li><a href="#"><i class="fa fa-circle-o"></i>Przekazanie środków</a></li>
                                     <li><a href="#"><i class="fa fa-circle-o"></i>Sprzedaż waluty</a></li>
                                     <li><a href="#"><i class="fa fa-circle-o"></i>Zakup waluty</a></li>
-                                    <li><a href="<?php echo base_url(); ?>index.php/UserProfile/index"><i class="fa fa-circle-o"></i>Użytkownicy</a></li>
-                                    <li><a href="<?php echo base_url(); ?>index.php/NewUser/index"><i class="fa fa-circle-o"></i>Nowy Użytkownik</a></li>
-                                    <li><a href="<?php echo base_url('index.php/DaneKantoru/index'); ?>"><i class="fa fa-circle-o"></i>Dane Kantoru</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i>Marża</a></li>
+                                    <li><a href="<?php echo base_url('index.php/AdminUserProfile/index') ?>"><i class="fa fa-circle-o"></i>Dane personalne</a></li>
+                                    <li><a href="<?php echo base_url('index.php/NewUserAdmin/addUser'); ?>"><i class="fa fa-circle-o"></i>Nowy Użytkownik</a></li>
+
                                 </ul>
                             </li> 
                             <li class=""><a href="#"><span>Zestawienia</span></a></li>

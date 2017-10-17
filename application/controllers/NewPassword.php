@@ -16,11 +16,28 @@ class NewPassword extends CI_Controller {
 
     public function index() {
 
-        $this->load->helper('form');
+        
         if ($this->session->userdata('user') == NULL) {
             $data = array('user' => NULL);
         } else {
             $data = array('user' => $this->session->userdata('user'));
+        }
+        if ($this->session->userdata('login') == NULL) {
+            $data['login'] = NULL;
+            $data['login_text'] = NULL;
+            $data['login_link'] = NULL;
+        } else if ($this->session->userdata('login') == 1) {
+            $data['login'] = 0;
+            $data['login_text'] = "Panel administracyjny";
+            $data['login_link'] = base_url('index.php/Admin/index');
+        } else if ($this->session->userdata('login') == 2) {
+            $data['login'] = 1;
+            $data['login_text'] = "Panel osobisty obsługi";
+            $data['login_link'] = base_url('index.php/AdminUser/index');
+        } else if ($this->session->userdata('login') == 3) {
+            $data['login'] = 2;
+            $data['login_text'] = "Twój portfel";
+            $data['login_link'] = base_url('index.php/PanelUser/index');
         }
         $this->load->view('headerAplikacja', $data);
         $this->load->view('newPassword');
@@ -28,7 +45,7 @@ class NewPassword extends CI_Controller {
     }
 
     public function email() {
-        $this->load->helper('form');
+        
         $this->load->library('email');
         $this->load->library('form_validation');
 
@@ -63,7 +80,7 @@ class NewPassword extends CI_Controller {
             $this->session->set_userdata('token', base64_encode($token));
             $url = site_url() . 'index.php/ResetPassword/index/' . $qstring . '/' . base64_encode(date('Y-m-d H:m:s')).'/'.$this->session->userdata('token');
             $this->email->to($this->input->post('part_1'));
-            $this->email->from('admin@swifter.pl', 'Zespoł Swifter.pl');
+            $this->email->from('admin@piotr-majewski.net.pl', 'Zespoł Swifter.pl');
             $this->email->subject('Witaj  ' . $email->emailUser($this->input->post('part_1'))['name'] . '  czeka cię zmiana hasła w Kantorze Swifetr.pl');
             $this->email->message('Aby zresetować hasło kliknij na poniższy link.     ' . ''
                     . '                                                                         '
@@ -83,6 +100,23 @@ class NewPassword extends CI_Controller {
             $data = array('user' => NULL);
         } else {
             $data = array('user' => $this->session->userdata('user'));
+        }
+        if ($this->session->userdata('login') == NULL) {
+            $data['login'] = NULL;
+            $data['login_text'] = NULL;
+            $data['login_link'] = NULL;
+        } else if ($this->session->userdata('login') == 1) {
+            $data['login'] = 0;
+            $data['login_text'] = "Panel administracyjny";
+            $data['login_link'] = base_url('index.php/Admin/index');
+        } else if ($this->session->userdata('login') == 2) {
+            $data['login'] = 1;
+            $data['login_text'] = "Panel osobisty obsługi";
+            $data['login_link'] = base_url('index.php/AdminUser/index');
+        } else if ($this->session->userdata('login') == 3) {
+            $data['login'] = 2;
+            $data['login_text'] = "Twój portfel";
+            $data['login_link'] = base_url('index.php/PanelUser/index');
         }
         $this->load->view('headerAplikacja', $data);
         $this->load->view('link');

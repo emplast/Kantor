@@ -25,7 +25,7 @@
 </script>
 
 
-<?php echo form_open('index.php/NewUserAdmin/index', array('class' => 'col-xs-8', 'id' => 'form_1')); ?>
+<?php echo form_open('index.php/NewUserAdmin/addUserService', array('class' => 'col-xs-8', 'id' => 'form_1')); ?>
 <!-- Horizontal Form -->
 <div class="box box-info">
     <div class="box-header with-border">
@@ -38,48 +38,48 @@
             <label  class="col-sm-2 control-label">Nazwisko</label>
             <div class="col-sm-10">
                 <?php echo form_input(array('id' => 'part_1', 'name' => 'part_1', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Nazwisko')) ?>
+                <?php echo form_error('part_1', '<div style="color:red">', '</div>'); ?>
             </div>
-            <?php echo form_error('part_1', '<div style="color:red">', '</div>'); ?>
         </div>
         </br>
         <div class="form-group">
             <label  class="col-sm-2 control-label">Imie</label>
             <div class="col-sm-10">
                 <?php echo form_input(array('id' => 'part_2', 'name' => 'part_2', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Imie')) ?>
+                <?php echo form_error('part_2', '<div style="color:red">', '</div>'); ?>
             </div>
-            <?php echo form_error('part_2', '<div style="color:red">', '</div>'); ?>
         </div>
         </br>
         <div class="form-group">
             <label class="col-sm-2 control-label">Login</label>
             <div class="col-sm-10">
                 <?php echo form_input(array('id' => 'part_3', 'name' => 'part_3', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Login')) ?>
+                <?php echo form_error('part_3', '<div style="color:red">', '</div>'); ?>
             </div>
-            <?php echo form_error('part_3', '<div style="color:red">', '</div>'); ?>
         </div>
         </br>
         <div class="form-group">
             <label class="col-sm-2 control-label">Hasło</label>
             <div class="col-sm-10">
                 <?php echo form_input(array('id' => 'part_4', 'name' => 'part_4', 'type' => 'password', 'class' => 'form-control', 'placeholder' => 'Hasło')) ?>
+                <?php echo form_error('part_4', '<div style="color:red">', '</div>'); ?>
             </div>
-            <?php echo form_error('part_4', '<div style="color:red">', '</div>'); ?>
         </div>
         </br>
         <div class="form-group">
             <label class="col-sm-2 control-label">E-mail</label>
             <div class="col-sm-10">
                 <?php echo form_input(array('id' => 'part_5', 'name' => 'part_5', 'type' => 'email', 'class' => 'form-control', 'placeholder' => 'E-mail')) ?>
+                <?php echo form_error('part_5', '<div style="color:red">', '</div>'); ?>
             </div>
-            <?php echo form_error('part_5', '<div style="color:red">', '</div>'); ?>
         </div>
         </br>
         <div class="form-group">
             <label class="col-sm-2 control-label">Telefon</label>
             <div class="col-sm-10">
                 <?php echo form_input(array('id' => 'part_6', 'name' => 'part_6', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Telefon')) ?>
+                <?php echo form_error('part_6', '<div style="color:red">', '</div>'); ?>
             </div>
-            <?php echo form_error('part_6', '<div style="color:red">', '</div>'); ?>
         </div>
         </br>
         <div class="form-group">

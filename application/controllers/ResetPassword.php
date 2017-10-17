@@ -26,10 +26,27 @@ class ResetPassword extends CI_Controller {
             } else {
                 $data = array('user' => $this->session->userdata('user'));
             }
+            if ($this->session->userdata('login') == NULL) {
+                $data['login'] = NULL;
+                $data['login_text'] = NULL;
+                $data['login_link'] = NULL;
+            } else if ($this->session->userdata('login') == 1) {
+                $data['login'] = 0;
+                $data['login_text'] = "Panel administracyjny";
+                $data['login_link'] = base_url('index.php/Admin/index');
+            } else if ($this->session->userdata('login') == 2) {
+                $data['login'] = 1;
+                $data['login_text'] = "Panel osobisty obsługi";
+                $data['login_link'] = base_url('index.php/AdminUser/index');
+            } else if ($this->session->userdata('login') == 3) {
+                $data['login'] = 2;
+                $data['login_text'] = "Twój portfel";
+                $data['login_link'] = base_url('index.php/PanelUser/index');
+            }
             $this->load->view('headerAplikacja', $data);
             $this->load->view('linkOut');
             $this->load->view('footerAplikacja');
-            $this->session->userdata('token',NULL);
+            $this->session->userdata('token', NULL);
         } else {
 
             if ($email->emailUser(base64_decode($this->uri->segment(3)))['wynik'] == TRUE & base64_decode($this->session->userdata('token')) == base64_decode($this->uri->segment(5))) {
@@ -37,6 +54,23 @@ class ResetPassword extends CI_Controller {
                     $data = array('user' => NULL);
                 } else {
                     $data = array('user' => $this->session->userdata('user'));
+                }
+                if ($this->session->userdata('login') == NULL) {
+                    $data['login'] = NULL;
+                    $data['login_text'] = NULL;
+                    $data['login_link'] = NULL;
+                } else if ($this->session->userdata('login') == 1) {
+                    $data['login'] = 0;
+                    $data['login_text'] = "Panel administracyjny";
+                    $data['login_link'] = base_url('index.php/Admin/index');
+                } else if ($this->session->userdata('login') == 2) {
+                    $data['login'] = 1;
+                    $data['login_text'] = "Panel osobisty obsługi";
+                    $data['login_link'] = base_url('index.php/AdminUser/index');
+                } else if ($this->session->userdata('login') == 3) {
+                    $data['login'] = 1;
+                    $data['login_text'] = "Twój portfel";
+                    $data['login_link'] = base_url('index.php/PanelUser/index');
                 }
                 $this->load->view('headerAplikacja', $data);
                 $this->load->view('newPasswordUser', array('imie' => $email->emailUser(base64_decode($this->uri->segment(3)))['name']));
@@ -50,10 +84,9 @@ class ResetPassword extends CI_Controller {
                     'password' => md5('45Dcd3068j'),
                     'to' => $email->emailUser(base64_decode($this->uri->segment(3)))['tel'],
                     'from' => 'Info',
-                    'message' => 'Witaj  ' . $email->emailUser(base64_decode($this->uri->segment(3)))['name'] . '. Token do zmiany hasła w kantorze Swifter.pl  ' .base64_decode($this->uri->segment(5))
+                    'message' => 'Witaj  ' . $email->emailUser(base64_decode($this->uri->segment(3)))['name'] . '. Token do zmiany hasła w kantorze Swifter.pl  ' . base64_decode($this->uri->segment(5))
                 );
                 $this->sms_send($params);
-               
             } else {
                 redirect('index.php/Aplikacja/index');
             }
@@ -110,6 +143,23 @@ class ResetPassword extends CI_Controller {
             } else {
                 $data = array('user' => $this->session->userdata('user'));
             }
+            if ($this->session->userdata('login') == NULL) {
+                $data['login'] = NULL;
+                $data['login_text'] = NULL;
+                $data['login_link'] = NULL;
+            } else if ($this->session->userdata('login') == 1) {
+                $data['login'] = 0;
+                $data['login_text'] = "Panel administracyjny";
+                $data['login_link'] = base_url('index.php/Admin/index');
+            } else if ($this->session->userdata('login') == 2) {
+                $data['login'] = 1;
+                $data['login_text'] = "Panel osobisty obsługi";
+                $data['login_link'] = base_url('index.php/Admin/index');
+            } else if ($this->session->userdata('login') == 3) {
+                $data['login'] = 2;
+                $data['login_text'] = "Twój portfel";
+                $data['login_link'] = base_url('index.php/PanelUser/index');
+            }
             $this->load->view('headerAplikacja', $data);
             $this->load->view('newPasswordUser', array('imie' => $email->emailUser($this->session->userdata('email'))['name']));
             $this->load->view('footerAplikacja');
@@ -120,6 +170,23 @@ class ResetPassword extends CI_Controller {
             } else {
                 $data = array('user' => $this->session->userdata('user'));
             }
+            if ($this->session->userdata('login') == NULL) {
+                $data['login'] = NULL;
+                $data['login_text'] = NULL;
+                $data['login_link'] = NULL;
+            } else if ($this->session->userdata('login') == 1) {
+                $data['login'] = 0;
+                $data['login_text'] = "Panel administracyjny";
+                $data['login_link'] = base_url('index.php/Admin/index');
+            } else if ($this->session->userdata('login') == 2) {
+                $data['login'] = 1;
+                $data['login_text'] = "Panel osobisty obsługi";
+                $data['login_link'] = base_url('index.php/Admin/index');
+            } else if ($this->session->userdata('login') == 3) {
+                $data['login'] = 2;
+                $data['login_text'] = "Twój portfel";
+                $data['login_link'] = base_url('index.php/PanelUser/index');
+            }
             $this->load->view('headerAplikacja', $data);
             $this->load->view('newPasswordOk');
             $this->load->view('footerAplikacja');
@@ -128,9 +195,8 @@ class ResetPassword extends CI_Controller {
 
     public function token() {
         if (base64_decode($this->session->userdata('token')) == $this->input->post('part_3')) {
-            $this->session->set_userdata('token',NULL);
+            $this->session->set_userdata('token', NULL);
             return TRUE;
-            
         } else {
             return FALSE;
         }

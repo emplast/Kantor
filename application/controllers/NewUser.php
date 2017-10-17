@@ -13,37 +13,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class NewUser extends CI_Controller {
     
-    public function index(){
-        $this->load->helper('form');
-        
-        $this->load->view('admin');
+    public function index() {
+        $this->load->model('userAdministracja_model');
+        $model = new UserAdministracja_model();
+        if ($this->session->userdata('user') == NULL) {
+            $data = array('user' => NULL);
+            redirect('index.php/Aplikacja/index');
+        } else {
+            $data = array('user' => $this->session->userdata('user'));
+        }
+        $data['photo'] = $model->photoAdminUser($this->session->userdata('user'));
+        $this->load->view('admin', $data);
         $this->load->view('newUser');
         $this->load->view('footer');
     }
-    public function add() {
-        if (!empty($this->session->userdata('adminUser'))) {
-            $this->load->model('addUserAdministracja_model');
-            $this->upload();
-            $addUser=new AddUserAdministracja_model();
-            $addUser->addUserAdmin();
-            $this->load->view('admin');
-            $this->load->view('footer');
-            redirect('index.php/NewUser/index');
-        }
-    }
-    public function upload(){
-        
-        $config['upload_path'] = './jpg/adminUser/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '100';
-        $config['max_width'] = '350';
-        $config['max_height'] = '300';
-        $this->load->library('upload', $config);
-        
-        $this->upload->do_upload();
-        $data = array('upload_data' => $this->upload->data());
-        $this->input->set_cookie('zdjecie',$this->input->post('userfile'),36);
-    }
-
+    
   
 }

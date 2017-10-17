@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -8,11 +7,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 /**
- * Description of Admin
+ * Description of DaneKantoru
  *
  * @author emplast
  */
-class Admin extends CI_Controller {
+class DaneKantoru extends CI_Controller {
 
     public function index() {
         $this->load->model('userAdministracja_model');
@@ -23,8 +22,16 @@ class Admin extends CI_Controller {
         } else {
             $data = array('user' => $this->session->userdata('user'));
         }
+        if ($this->input->cookie('plik') != NULL) {
+            $data['plik'] = $this->input->cookie('plik');
+        } else {
+            $data['plik'] = 'Nie wybrano zdjęcia';
+        }
+        $data['haslo'] = 0;
+        $data['load'] = $model->dataUserAdmin($this->session->userdata('user'));
         $data['photo'] = $model->photoAdminUser($this->session->userdata('user'));
         $this->load->view('admin', $data);
+        $this->load->view('daneKantoru');
         $this->load->view('footer');
     }
 

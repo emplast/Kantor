@@ -8,11 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 /**
- * Description of Admin
+ * Description of AdminUser
  *
  * @author emplast
  */
-class Admin extends CI_Controller {
+class AdminUser extends CI_Controller {
 
     public function index() {
         $this->load->model('userAdministracja_model');
@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
             $data = array('user' => $this->session->userdata('user'));
         }
         $data['photo'] = $model->photoAdminUser($this->session->userdata('user'));
-        $this->load->view('admin', $data);
+        $this->load->view('adminUser', $data);
         $this->load->view('footer');
     }
 

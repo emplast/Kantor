@@ -52,12 +52,39 @@
     .realperson-disabled .realperson-regen {
         cursor: default;
     }
+    #part_8{
+        margin-left: 50px;
+    }
+    #part_9{
+        margin-left: 48px;
+    }
+    #part_10{
+        margin-left: 105px;
+    }
 </style>
-<script>
+<script type="text/javascript">
     $(function () {
         $('#defaultReal').realperson();
         $('#defaultReal').realperson('option', {length: 4, includeNumbers: false, hashName: 'realHash', regenerate: 'Niewyrażnie'});
 
+    });
+
+    $(function () {
+        $('#part_8').click(function () {
+            $('#part_9').prop('checked', false);
+            $('#part_10').prop('checked', false);
+
+        });
+        $('#part_9').click(function () {
+            $('#part_8').prop('checked', false);
+            $('#part_10').prop('checked', false);
+
+        });
+        $('#part_10').click(function () {
+            $('#part_8').prop('checked', false);
+            $('#part_9').prop('checked', false);
+
+        });
     });
 
 </script>
@@ -69,22 +96,28 @@
 
         </br>
         <ul class="nav">
-            <li><p class="pull-left">Login:</p><?php echo form_input(array('name' => 'part_1', 'id' => 'login', 'type' => 'text', 'class' => 'form-control ', 'placeholder' => 'Login')) ?></li><?php echo form_error('part_1', '<div style="color:red">', '</div>'); ?>
+            <label>Rodzaj klienta</label>
+            <li><p>Osoba fizyczna&nbsp;&nbsp;<?php echo form_checkbox(array('id' => 'part_8', 'name' => 'part_8', 'value' => TRUE)); ?></p></li>
+            <li><p>Instytucja/Firma&nbsp;&nbsp;<?php echo form_checkbox(array('id' => 'part_9', 'name' => 'part_9', 'value' => TRUE)); ?></p></li>
+            <li><p>Kantor&nbsp;&nbsp;<?php echo form_checkbox(array('id' => 'part_10', 'name' => 'part_10', 'value' => TRUE)); ?></p></li><?php echo form_error('part_10', '<div style="color:red">', '</div>'); ?>
+            </br>
+            <label>Dane klienta</label>
+            </br><li><p class="pull-left">Login:</p><?php echo form_input(array('name' => 'part_1', 'id' => 'login', 'type' => 'text', 'class' => 'form-control ', 'placeholder' => 'Login')) ?></li><?php echo form_error('part_1', '<div style="color:red">', '</div>'); ?>
             </br><li><p class="pull-left">Hasło:</p><?php echo form_password(array('name' => 'part_2', 'id' => 'haslo', 'type' => 'text', 'class' => 'form-control ', 'placeholder' => 'Hasło')) ?></li><?php echo form_error('part_2', '<div style="color:red">', '</div>'); ?>
             </br><li><p class="pull-left">Imie:</p><?php echo form_input(array('name' => 'part_3', 'id' => 'imie', 'type' => 'text', 'class' => 'form-control ', 'placeholder' => 'Imie')) ?></li><?php echo form_error('part_3', '<div style="color:red">', '</div>'); ?>
             </br><li><p class="pull-left">Nazwisko:</p><?php echo form_input(array('name' => 'part_4', 'id' => 'nazwisko', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Nazwisko')) ?></li><?php echo form_error('part_4', '<div style="color:red">', '</div>'); ?>
             </br><li><p class="pull-left">E-mail:</p><?php echo form_input(array('name' => 'part_5', 'id' => 'email', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'E-mail')) ?></li><?php echo form_error('part_5', '<div style="color:red">', '</div>'); ?>
             </br><li><p class="pull-left">Tel komórkowy:</p><?php echo form_input(array('name' => 'part_6', 'id' => 'telKomorkowy', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Tel Komórkowy')) ?></li><?php echo form_error('part_6', '<div style="color:red">', '</div>'); ?>
-            </br><li><?php echo form_input(array('name' => 'defaultReal', 'id' => 'defaultReal', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Nie jestem robotem')) ?></li><?php echo form_error('defaultReal', '<div style="color:red">', '</div>'); ?>
+            <br/><li><?php echo form_input(array('name' => 'defaultReal', 'id' => 'defaultReal', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Nie jestem robotem')) ?></li><?php echo form_error('defaultReal', '<div style="color:red">', '</div>'); ?>
 
 
         </ul>
         </br>
         </br>
-         <?php echo form_input(array('name' => 'part_7','id'=>'button_1', 'type' => 'submit', 'class' => 'btn btn-default', 'value' => 'Zapisz')); ?>
-       
-        </div>
-    
+        <?php echo form_input(array('name' => 'part_7', 'id' => 'button_1', 'type' => 'submit', 'class' => 'btn btn-default', 'value' => 'Zapisz')); ?>
+
+    </div>
+
 </div></br></br></br>
 
 

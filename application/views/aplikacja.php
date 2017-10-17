@@ -77,8 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         cursor:pointer;
 
     }
-   
-    
+
+
     #img_sprzedaj_eur,
     #img_sprzedaj_usd,
     #img_sprzedaj_gbp,
@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-right: 15px;
     }
 
-   
+
     #img_kup_eur,
     #img_kup_usd,
     #img_kup_gbp,    
@@ -144,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #table{
         width: 550px;
     }
-    
+
     #img_sprzedaj_eur,
     #img_sprzedaj_usd,
     #img_sprzedaj_gbp,
@@ -159,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #img_sprzedaj_1_czk{
         display: none;
     }
-   
+
     #img_kup_eur,
     #img_kup_usd,
     #img_kup_gbp,
@@ -197,6 +197,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 type: 'GET',
                 dataType: 'xml',
                 timeout: 3000,
+               
                 url: '<?php echo base_url('xml/plik.xml') ?>',
                 success: function (xml) {
                     $(xml).find('pair').each(function () {
@@ -302,8 +303,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $.cookie('gbp', $(this).find('bid').text());
                             $.cookie('gbp_k', $(this).find('ask').text());
                         }
-                        
-                         if ($(this).find('name').text() == 'CHFPLN') {
+
+                        if ($(this).find('name').text() == 'CHFPLN') {
                             if ($.cookie('chf') > $(this).find('bid').text()) {
                                 $('#img_sprzedaj_chf').show();
                                 $('#img_sprzedaj_1_chf').css('display', 'none');
@@ -335,9 +336,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $.cookie('chf', $(this).find('bid').text());
                             $.cookie('chf_k', $(this).find('ask').text());
                         }
-                        
-                        
-                         if ($(this).find('name').text() == 'RUBPLN') {
+
+
+                        if ($(this).find('name').text() == 'RUBPLN') {
                             if ($.cookie('rub') > $(this).find('bid').text()) {
                                 $('#img_sprzedaj_rub').show();
                                 $('#img_sprzedaj_1_rub').css('display', 'none');
@@ -369,9 +370,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $.cookie('rub', $(this).find('bid').text());
                             $.cookie('rub_k', $(this).find('ask').text());
                         }
-                        
-                        
-                        
+
+
+
                         if ($(this).find('name').text() == 'CZKPLN') {
                             if ($.cookie('czk') > $(this).find('bid').text()) {
                                 $('#img_sprzedaj_czk').show();
@@ -529,13 +530,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="caption" >
                 <div  id="sprzedaj"class="div_hover"style=" cursor: pointer;width: 149px; height: 65px;position: absolute;display: inline">
                     <a href="#" id="a_sprzedaj">
-                        <h5>&nbsp;Sprzedaj</h5><h4 id="chf">&nbsp;<?php echo $chf?></h4>
+                        <h5>&nbsp;Sprzedaj</h5><h4 id="chf">&nbsp;<?php echo $chf ?></h4>
                         <img class="pull-right" id="img_sprzedaj_chf" src="<?php echo base_url('jpg/flags/arrow/arrow-down_24_24_r.png'); ?>">
                         <img class="pull-right" id="img_sprzedaj_1_chf" src="<?php echo base_url('jpg/flags/arrow/arrow-up_24_24_g.png'); ?>"></a>
                 </div>
                 <div id="kup" class="div_hover" style="width: 149px; height: 65px;position: absolute; display: inline">
                     <a href="#" id="a_kup">
-                        <h5 id="h_kup">&nbsp;Kup</h5><h4 id="chf_k">&nbsp;<?php echo $chf_k?></h4>
+                        <h5 id="h_kup">&nbsp;Kup</h5><h4 id="chf_k">&nbsp;<?php echo $chf_k ?></h4>
                         <img class="pull-right" id="img_kup_chf" src="<?php echo base_url('jpg/flags/arrow/arrow-down_24_24_g.png'); ?>">
                         <img class="pull-right" id="img_kup_1_chf" src="<?php echo base_url('jpg/flags/arrow/arrow-up_24_24_r.png'); ?>"></a>
                 </div>
@@ -555,13 +556,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="caption" >
                 <div  id="sprzedaj"class="div_hover"style=" cursor: pointer;width: 149px; height: 65px;position: absolute;display: inline">
                     <a href="#" id="a_sprzedaj">
-                        <h5>&nbsp;Sprzedaj</h5><h4 id="rub">&nbsp;<?php echo $rub?></h4>
+                        <h5>&nbsp;Sprzedaj</h5><h4 id="rub">&nbsp;<?php echo $rub ?></h4>
                         <img class="pull-right" id="img_sprzedaj_rub" src="<?php echo base_url('jpg/flags/arrow/arrow-down_24_24_r.png'); ?>">
                         <img class="pull-right" id="img_sprzedaj_1_rub" src="<?php echo base_url('jpg/flags/arrow/arrow-up_24_24_g.png'); ?>"></a>
                 </div>
                 <div id="kup" class="div_hover" style="width: 149px; height: 65px;position: absolute; display: inline">
                     <a href="#" id="a_kup">
-                        <h5 id="h_kup">&nbsp;Kup</h5><h4 id="rub_k">&nbsp;<?php echo $rub_k?></h4>
+                        <h5 id="h_kup">&nbsp;Kup</h5><h4 id="rub_k">&nbsp;<?php echo $rub_k ?></h4>
                         <img class="pull-right" id="img_kup_rub" src="<?php echo base_url('jpg/flags/arrow/arrow-down_24_24_g.png'); ?>">
                         <img class="pull-right" id="img_kup_1_rub" src="<?php echo base_url('jpg/flags/arrow/arrow-up_24_24_r.png'); ?>"></a>
                 </div>
@@ -581,13 +582,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="caption" >
                 <div  id="sprzedaj"class="div_hover"style=" cursor: pointer;width: 149px; height: 65px;position: absolute;display: inline">
                     <a href="#" id="a_sprzedaj">
-                        <h5>&nbsp;Sprzedaj</h5><h4 id="czk">&nbsp;<?php echo $czk?></h4>
+                        <h5>&nbsp;Sprzedaj</h5><h4 id="czk">&nbsp;<?php echo $czk ?></h4>
                         <img class="pull-right" id="img_sprzedaj_czk" src="<?php echo base_url('jpg/flags/arrow/arrow-down_24_24_r.png'); ?>">
                         <img class="pull-right" id="img_sprzedaj_1_czk" src="<?php echo base_url('jpg/flags/arrow/arrow-up_24_24_g.png'); ?>"></a>
                 </div>
                 <div id="kup" class="div_hover" style="width: 149px; height: 65px;position: absolute; display: inline">
                     <a href="#" id="a_kup">
-                        <h5 id="h_kup">&nbsp;Kup</h5><h4 id="czk_k">&nbsp;<?php echo $czk_k?></h4>
+                        <h5 id="h_kup">&nbsp;Kup</h5><h4 id="czk_k">&nbsp;<?php echo $czk_k ?></h4>
                         <img class="pull-right" id="img_kup_czk" src="<?php echo base_url('jpg/flags/arrow/arrow-down_24_24_g.png'); ?>">
                         <img class="pull-right" id="img_kup_1_czk" src="<?php echo base_url('jpg/flags/arrow/arrow-up_24_24_r.png'); ?>"></a>
                 </div>

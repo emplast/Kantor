@@ -16,10 +16,19 @@ class UserProfile extends CI_Controller{
    
     public function index(){
         $this->load->model('userAdministracja_model');
-        $this->load->view('admin');
-        $user=new UserAdministracja_model();
-        $result['users']=$user->userAdmin();
-        $this->load->view('userProfile',$result);
+        $user = new UserAdministracja_model();
+        $dane['lista'] = $user->userAdmin();
+        $dane['haslo'] = 0;
+        if ($this->session->userdata('user') == NULL) {
+            $data = array('user' => NULL);
+            redirect('index.php/Aplikacja/index');
+        } else {
+            $data = array('user' => $this->session->userdata('user'));
+        }
+        $data['photo'] = $user->photoAdminUser($this->session->userdata('user'));
+        $this->load->view('admin', $data);
+
+        $this->load->view('userProfile', $dane);
         $this->load->view('footer');
     }
 }

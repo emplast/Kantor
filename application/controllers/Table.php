@@ -97,7 +97,7 @@ class Table extends CI_Controller {
         $params = array(
             'username' => 'emplast@wp.pl',
             'password' => md5('piotr123'),
-            'to' => '794250440',
+            'to' => '788308893',
             'from' => 'Info',
             'message' => "Pozdrowienia z Milicza przesyla Piotr Majewski z Aplikacji Kantor ",
         );
